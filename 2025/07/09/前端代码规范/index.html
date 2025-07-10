@@ -20,16 +20,17 @@
     var CONFIG = {"hostname":"dddd-12.github.io","root":"/kagura.github.io/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="React-Vite 前端项目规范自动化方案 实现 Vite 前端项目的规范自动化可以显著提高代码质量、统一团队协作风格并减少低级错误。以下方案适用 react-vite 相关项目   1.ESLint 代码检查1.1 安装依赖1npm install --save-dev eslint @eslint&#x2F;js typescript-eslint eslint-plugin-react-hooks">
+  <meta name="description" content="React-Vite 前端项目规范自动化方案 实现 Vite 前端项目的规范自动化可以显著提高代码质量、统一团队协作风格并减少低级错误。以下方案适用 react-vite 相关项目">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端代码规范">
 <meta property="og:url" content="https://dddd-12.github.io/kagura.github.io/2025/07/09/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/index.html">
-<meta property="og:site_name" content="Kagura">
-<meta property="og:description" content="React-Vite 前端项目规范自动化方案 实现 Vite 前端项目的规范自动化可以显著提高代码质量、统一团队协作风格并减少低级错误。以下方案适用 react-vite 相关项目   1.ESLint 代码检查1.1 安装依赖1npm install --save-dev eslint @eslint&#x2F;js typescript-eslint eslint-plugin-react-hooks">
+<meta property="og:site_name" content="Kagura&#39;s blog">
+<meta property="og:description" content="React-Vite 前端项目规范自动化方案 实现 Vite 前端项目的规范自动化可以显著提高代码质量、统一团队协作风格并减少低级错误。以下方案适用 react-vite 相关项目">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-07-09T08:11:07.000Z">
-<meta property="article:modified_time" content="2025-07-09T09:32:34.207Z">
+<meta property="article:modified_time" content="2025-07-10T02:38:28.940Z">
 <meta property="article:author" content="Tan Sherry">
+<meta property="article:tag" content="React-Vite">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://dddd-12.github.io/kagura.github.io/2025/07/09/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">
@@ -45,7 +46,7 @@
   };
 </script>
 
-  <title>前端代码规范 | Kagura</title>
+  <title>前端代码规范 | Kagura's blog</title>
   
 
 
@@ -96,7 +97,7 @@
 
     <a href="/kagura.github.io/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Kagura</h1>
+      <h1 class="site-title">Kagura's blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">take some notes!</p>
@@ -116,11 +117,6 @@
         <li class="menu-item menu-item-home">
 
     <a href="/kagura.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/kagura.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
@@ -175,7 +171,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kagura">
+      <meta itemprop="name" content="Kagura's blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -188,10 +184,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2025-07-09 16:11:07 / 修改时间：17:32:34" itemprop="dateCreated datePublished" datetime="2025-07-09T16:11:07+08:00">2025-07-09</time>
+              <time title="创建时间：2025-07-09 16:11:07" itemprop="dateCreated datePublished" datetime="2025-07-09T16:11:07+08:00">2025-07-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-07-10 10:38:28" itemprop="dateModified" datetime="2025-07-10T10:38:28+08:00">2025-07-10</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -216,6 +218,8 @@
         <h1 id="React-Vite-前端项目规范自动化方案"><a href="#React-Vite-前端项目规范自动化方案" class="headerlink" title="React-Vite 前端项目规范自动化方案"></a>React-Vite 前端项目规范自动化方案</h1><blockquote>
 <p>实现 Vite 前端项目的规范自动化可以显著提高代码质量、统一团队协作风格并减少低级错误。以下方案适用 react-vite 相关项目</p>
 </blockquote>
+<span id="more"></span>
+
 <hr>
 <h2 id="1-ESLint-代码检查"><a href="#1-ESLint-代码检查" class="headerlink" title="1.ESLint 代码检查"></a>1.ESLint 代码检查</h2><h3 id="1-1-安装依赖"><a href="#1-1-安装依赖" class="headerlink" title="1.1 安装依赖"></a>1.1 安装依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev eslint @eslint/js typescript-eslint eslint-plugin-react-hooks eslint-plugin-react-refresh</span><br></pre></td></tr></table></figure>
 
@@ -256,6 +260,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/kagura.github.io/tags/React-Vite/" rel="tag"># React-Vite</a>
+          </div>
 
         
 
@@ -266,7 +273,10 @@
     <a href="/kagura.github.io/2025/07/08/hello-world/" rel="prev" title="Hello World">
       <i class="fa fa-chevron-left"></i> Hello World
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/kagura.github.io/2025/07/10/Vue-Vite%E9%85%8D%E7%BD%AE%E8%A7%A3%E6%9E%90/" rel="next" title="Vue-Vite配置解析">
+      Vue-Vite配置解析 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -341,13 +351,21 @@
       <div class="site-state-item site-state-posts">
           <a href="/kagura.github.io/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
+            <a href="/kagura.github.io/categories/">
+          
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">分类</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/kagura.github.io/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
