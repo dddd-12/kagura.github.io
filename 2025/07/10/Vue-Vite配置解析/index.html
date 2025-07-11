@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"dddd-12.github.io","root":"/kagura.github.io/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Vite 工作原理及项目配置说明 1. Vite 的基本工作原理Vite 是一个现代前端构建工具，主要特点包括：  开发环境下极速冷启动：利用原生 ES 模块（ESM），无需打包，按需加载。 构建时高效打包：基于 Rollup 进行生产环境打包优化。 丰富的插件生态：支持多种插件扩展功能。 配置灵活：通过 vite.config.js 进行高度自定义。  2. vite.config.js 文件1">
+  <meta name="description" content="Vite 工作原理及项目配置说明 本文将详细解析 Vite 在 Vue 项目中的配置方法与原理，涵盖插件使用、代理设置、路径别名、CSS 预处理、构建输出等关键环节，帮助你快速理解并高效配置现代前端开发环境。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue-Vite配置解析">
 <meta property="og:url" content="https://dddd-12.github.io/kagura.github.io/2025/07/10/Vue-Vite%E9%85%8D%E7%BD%AE%E8%A7%A3%E6%9E%90/index.html">
 <meta property="og:site_name" content="Kagura&#39;s blog">
-<meta property="og:description" content="Vite 工作原理及项目配置说明 1. Vite 的基本工作原理Vite 是一个现代前端构建工具，主要特点包括：  开发环境下极速冷启动：利用原生 ES 模块（ESM），无需打包，按需加载。 构建时高效打包：基于 Rollup 进行生产环境打包优化。 丰富的插件生态：支持多种插件扩展功能。 配置灵活：通过 vite.config.js 进行高度自定义。  2. vite.config.js 文件1">
+<meta property="og:description" content="Vite 工作原理及项目配置说明 本文将详细解析 Vite 在 Vue 项目中的配置方法与原理，涵盖插件使用、代理设置、路径别名、CSS 预处理、构建输出等关键环节，帮助你快速理解并高效配置现代前端开发环境。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-07-10T08:27:11.000Z">
-<meta property="article:modified_time" content="2025-07-10T10:03:24.625Z">
+<meta property="article:modified_time" content="2025-07-11T05:53:00.240Z">
 <meta property="article:author" content="Tan Sherry">
 <meta property="article:tag" content="Vue-Vite">
 <meta name="twitter:card" content="summary">
@@ -184,10 +184,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2025-07-10 16:27:11 / 修改时间：18:03:24" itemprop="dateCreated datePublished" datetime="2025-07-10T16:27:11+08:00">2025-07-10</time>
+              <time title="创建时间：2025-07-10 16:27:11" itemprop="dateCreated datePublished" datetime="2025-07-10T16:27:11+08:00">2025-07-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-07-11 13:53:00" itemprop="dateModified" datetime="2025-07-11T13:53:00+08:00">2025-07-11</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -209,8 +215,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Vite-工作原理及项目配置说明"><a href="#Vite-工作原理及项目配置说明" class="headerlink" title="Vite 工作原理及项目配置说明"></a>Vite 工作原理及项目配置说明</h1><hr>
-<h2 id="1-Vite-的基本工作原理"><a href="#1-Vite-的基本工作原理" class="headerlink" title="1. Vite 的基本工作原理"></a>1. Vite 的基本工作原理</h2><p>Vite 是一个现代前端构建工具，主要特点包括：</p>
+        <h1 id="Vite-工作原理及项目配置说明"><a href="#Vite-工作原理及项目配置说明" class="headerlink" title="Vite 工作原理及项目配置说明"></a>Vite 工作原理及项目配置说明</h1><blockquote>
+<p>本文将详细解析 Vite 在 Vue 项目中的配置方法与原理，涵盖插件使用、代理设置、路径别名、CSS 预处理、构建输出等关键环节，帮助你快速理解并高效配置现代前端开发环境。</p>
+</blockquote>
+<h2 id=""><a href="#" class="headerlink" title=""></a><span id="more"></span></h2><h2 id="1-Vite-的基本工作原理"><a href="#1-Vite-的基本工作原理" class="headerlink" title="1. Vite 的基本工作原理"></a>1. Vite 的基本工作原理</h2><p>Vite 是一个现代前端构建工具，主要特点包括：</p>
 <ul>
 <li>开发环境下极速冷启动：利用原生 ES 模块（ESM），无需打包，按需加载。</li>
 <li>构建时高效打包：基于 Rollup 进行生产环境打包优化。</li>
@@ -228,28 +236,57 @@
 <h3 id="3-2-插件系统"><a href="#3-2-插件系统" class="headerlink" title="3.2 插件系统"></a>3.2 插件系统</h3><p>主要插件及作用</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">plugins</span>: []; <span class="comment">//设置插件</span></span><br></pre></td></tr></table></figure>
 
+<h4 id="3-2-1-Vue-支持"><a href="#3-2-1-Vue-支持" class="headerlink" title="3.2.1 Vue 支持"></a>3.2.1 Vue 支持</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">plugins</span>: [<span class="title class_">Vue</span>()];</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li><code>@vitejs/plugin-vue</code></li>
+<li><code>@vitejs/plugin-vue</code> 支持 Vue 单文件组件（.vue）的解析与热更新。</li>
 </ul>
-<p>支持 Vue 单文件组件（.vue）的解析与热更新。</p>
-<p><code>unocss/vite</code></p>
-<p>集成 UnoCSS 原子化 CSS 框架，支持按需生成 CSS。</p>
-<p><code>unplugin-auto-import/vite</code></p>
-<p>自动导入 Vue、VueUse、Pinia、Vue Router 等常用 API，无需手动 import。</p>
-<p><code>unplugin-vue-components/vite</code></p>
-<p>自动注册组件，支持 Element Plus、Vant 等 UI 库的自动引入。</p>
-<p><code>vite-plugin-svg-icons</code></p>
-<p>支持 SVG 图标自动生成 symbol，便于 SVG 图标的统一管理和使用。</p>
-<p>自定义插件 <code>html-transform</code></p>
-<p>在打包时将 %BUILD_TIME% 替换为当前构建时间，便于版本追踪。</p>
-<h3 id="3-3-服务器与代理"><a href="#3-3-服务器与代理" class="headerlink" title="3.3 服务器与代理"></a>3.3 服务器与代理</h3><p><code>server.host: true</code></p>
-<p>允许通过局域网 IP 访问本地开发服务器。</p>
-<p><code>server.port: 3500</code></p>
-<p>本地开发服务器端口为 3500。</p>
-<p><code>server.proxy</code></p>
-<p>配置了 &#x2F;admin 路径的 API 代理，将请求转发到后端接口（由环境变量 VITE_APP_DEV_API 决定），支持 WebSocket，且会在响应头中添加 x-req-proxyUrl 便于调试。</p>
+<h4 id="3-2-2-UnoCSS"><a href="#3-2-2-UnoCSS" class="headerlink" title="3.2.2 UnoCSS"></a>3.2.2 UnoCSS</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">UnoCSS</span>(&#123;</span><br><span class="line">  <span class="attr">hmrTopLevelAwait</span>: <span class="literal">false</span>,</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>原子化 CSS 方案，支持热更新</li>
+</ul>
+<p><code>unocss/vite</code> 集成 UnoCSS 原子化 CSS 框架，支持按需生成 CSS。</p>
+<h4 id="3-2-3-HTML-变量替换"><a href="#3-2-3-HTML-变量替换" class="headerlink" title="3.2.3 HTML 变量替换"></a>3.2.3 HTML 变量替换</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;html-transform&#x27;</span>,</span><br><span class="line">  <span class="title function_">transformIndexHtml</span>(<span class="params">html</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> html.<span class="title function_">replace</span>(<span class="string">&#x27;%BUILD_TIME%&#x27;</span>, <span class="title function_">dayjs</span>().<span class="title function_">format</span>(<span class="string">&#x27;YYYY-MM-DD HH:mm:ss&#x27;</span>))</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>构建时将 %BUILD_TIME% 替换为当前时间，便于追踪构建版本。</li>
+</ul>
+<h4 id="3-2-4-自动导入"><a href="#3-2-4-自动导入" class="headerlink" title="3.2.4 自动导入"></a>3.2.4 自动导入</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">AutoImport</span>(&#123;</span><br><span class="line">  <span class="attr">imports</span>: [<span class="string">&#x27;vue&#x27;</span>, <span class="string">&#x27;@vueuse/core&#x27;</span>, <span class="string">&#x27;pinia&#x27;</span>, <span class="string">&#x27;vue-router&#x27;</span>],</span><br><span class="line">  <span class="attr">resolvers</span>: [<span class="title class_">ElementPlusResolver</span>(), <span class="title class_">VantResolver</span>()],</span><br><span class="line">  <span class="attr">eslintrc</span>: &#123;</span><br><span class="line">    <span class="attr">enabled</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">filepath</span>: <span class="string">&#x27;./.eslintrc-auto-import.json&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>unplugin-auto-import/vite</code> 自动导入 Vue、VueUse、Pinia、Vue Router 等常用 API，无需手动 import。</li>
+<li>自动导入常用 API，无需手动 import。</li>
+<li>支持 Element Plus、Vant 组件库的自动导入。</li>
+<li>自动生成 ESLint 配置，避免未定义报错。</li>
+</ul>
+<h4 id="3-2-5-组件自动注册"><a href="#3-2-5-组件自动注册" class="headerlink" title="3.2.5 组件自动注册"></a>3.2.5 组件自动注册</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Components</span>(&#123;</span><br><span class="line">  <span class="attr">resolvers</span>: [<span class="title class_">VantResolver</span>()],</span><br><span class="line">  <span class="attr">dts</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">dirs</span>: [<span class="string">&#x27;src/components/common&#x27;</span>],</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>unplugin-vue-components/vite</code> 自动注册组件，支持 Element Plus、Vant 等 UI 库的自动引入。</li>
+</ul>
+<h4 id="3-2-6-SVG-图标自动引入"><a href="#3-2-6-SVG-图标自动引入" class="headerlink" title="3.2.6 SVG 图标自动引入"></a>3.2.6 SVG 图标自动引入</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">createSvgIconsPlugin</span>(&#123;</span><br><span class="line">  <span class="attr">iconDirs</span>: [path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;./src/icons/svg&#x27;</span>)],</span><br><span class="line">  <span class="attr">symbolId</span>: <span class="string">&#x27;icon-[dir]-[name]&#x27;</span>,</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>vite-plugin-svg-icons</code> 支持 SVG 图标自动生成 symbol，便于 SVG 图标的统一管理和使用。</li>
+<li>自动将 src&#x2F;icons&#x2F;svg 下的 SVG 文件注册为图标组件。</li>
+</ul>
+<h3 id="3-3-服务器与代理"><a href="#3-3-服务器与代理" class="headerlink" title="3.3 服务器与代理"></a>3.3 服务器与代理</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server</span>: &#123;</span><br><span class="line">  <span class="attr">open</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">host</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">port</span>: <span class="number">3500</span>,</span><br><span class="line">  <span class="attr">proxy</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;/admin&#x27;</span>: &#123;</span><br><span class="line">      <span class="attr">target</span>: <span class="title function_">loadEnv</span>(<span class="string">&#x27;development&#x27;</span>, process.<span class="title function_">cwd</span>()).<span class="property">VITE_APP_DEV_API</span>,</span><br><span class="line">      <span class="attr">changeOrigin</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">ws</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">bypass</span>: <span class="keyword">function</span> (<span class="params">req, res, options</span>) &#123;</span><br><span class="line">        res.<span class="title function_">setHeader</span>(<span class="string">&#x27;x-req-proxyUrl&#x27;</span>, options.<span class="property">target</span>);</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="comment">// rewrite: &#123;</span></span><br><span class="line">      <span class="comment">//   &#x27;^/admin&#x27;: &#x27;/&#x27;,</span></span><br><span class="line">      <span class="comment">// &#125;,</span></span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>本地开发服务器监听所有主机（host: true）, 允许通过局域网 IP 访问本地开发服务器，端口为 3500。</li>
+<li>配置 &#x2F;admin 路径的 API 代理，将请求转发到后端接口（由环境变量 VITE_APP_DEV_API 决定），支持 WebSocket，且会在响应头中添加 x-req-proxyUrl 便于调试。</li>
+<li>支持 WebSocket。</li>
+<li>通过 bypass 可自定义请求头。</li>
+<li>通过 rewrite 修改默认指向。</li>
+</ul>
 <h3 id="3-4-路径别名"><a href="#3-4-路径别名" class="headerlink" title="3.4 路径别名"></a>3.4 路径别名</h3><p><code>@</code> 映射到 <code>src</code> 目录，便于简化 import 路径。</p>
-<h3 id="3-5-CSS-预处理"><a href="#3-5-CSS-预处理" class="headerlink" title="3.5 CSS 预处理"></a>3.5 CSS 预处理</h3><p>支持全局 SCSS 变量，通过 <code>@use &quot;@/styles/variables.scss&quot; as *;</code> 自动注入到每个 SCSS 文件。</p>
+<h3 id="3-5-CSS-预处理"><a href="#3-5-CSS-预处理" class="headerlink" title="3.5 CSS 预处理"></a>3.5 CSS 预处理</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">css</span>: &#123;</span><br><span class="line">  <span class="attr">preprocessorOptions</span>: &#123;</span><br><span class="line">    <span class="attr">scss</span>: &#123;</span><br><span class="line">      <span class="attr">api</span>: <span class="string">&#x27;modern-compiler&#x27;</span>,</span><br><span class="line">      <span class="attr">additionalData</span>: <span class="string">`@use &quot;@/styles/variables.scss&quot; as *;`</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>api: ‘modern-compiler’ 解决 sass leagcy 报错</li>
+<li>支持全局 SCSS 变量，通过 <code>@use &quot;@/styles/variables.scss&quot; as *;</code> 自动注入到每个 SCSS 文件</li>
+</ul>
 <h3 id="3-6-构建与输出"><a href="#3-6-构建与输出" class="headerlink" title="3.6 构建与输出"></a>3.6 构建与输出</h3><p>输出目录结构</p>
 <ul>
 <li><p>JS 文件：js&#x2F;[name].[hash].js</p>
@@ -270,8 +307,6 @@
 </li>
 <li><p><code>utilsChunk</code>：常用工具库（如 axios、dayjs）</p>
 </li>
-<li><p>SVG 图标<br>所有 <code>src/icons/svg</code> 下的 SVG 文件会被打包为 symbol，symbolId 格式为 icon-[dir]-[name]。</p>
-</li>
 </ul>
 <h2 id="4-Vite-启动与构建流程"><a href="#4-Vite-启动与构建流程" class="headerlink" title="4. Vite 启动与构建流程"></a>4. Vite 启动与构建流程</h2><p>开发阶段</p>
 <ul>
@@ -288,7 +323,7 @@
 <li>按 manualChunks 拆分依赖，优化首屏加载速度。</li>
 <li>生成 symbol 化的 SVG 图标，便于前端统一调用。</li>
 </ul>
-<h3 id="5-参考链接"><a href="#5-参考链接" class="headerlink" title="5. 参考链接"></a>5. 参考链接</h3><p><a target="_blank" rel="noopener" href="https://vitejs.cn/">Vite 官方文档</a><br><a target="_blank" rel="noopener" href="https://unocss-cn.pages.dev/">UnoCSS</a><br><a target="_blank" rel="noopener" href="https://github.com/unplugin/unplugin-auto-import">unplugin-auto-import</a><br><a target="_blank" rel="noopener" href="https://github.com/unplugin/unplugin-vue-components">unplugin-vue-components</a><br><a target="_blank" rel="noopener" href="https://github.com/vbenjs/vite-plugin-svg-icons">vite-plugin-svg-icons</a><br>如需进一步了解某一插件或配置项的详细原理，可指定具体部分进行深入解读。</p>
+<h2 id="5-参考链接"><a href="#5-参考链接" class="headerlink" title="5. 参考链接"></a>5. 参考链接</h2><p><a target="_blank" rel="noopener" href="https://vitejs.cn/">Vite 官方文档</a><br><a target="_blank" rel="noopener" href="https://unocss-cn.pages.dev/">UnoCSS</a><br><a target="_blank" rel="noopener" href="https://github.com/unplugin/unplugin-auto-import">unplugin-auto-import</a><br><a target="_blank" rel="noopener" href="https://github.com/unplugin/unplugin-vue-components">unplugin-vue-components</a><br><a target="_blank" rel="noopener" href="https://github.com/vbenjs/vite-plugin-svg-icons">vite-plugin-svg-icons</a><br>如需进一步了解某一插件或配置项的详细原理，可指定具体部分进行深入解读。</p>
 
     </div>
 
@@ -369,7 +404,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vite-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%8F%8A%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">Vite 工作原理及项目配置说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Vite-%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.</span> <span class="nav-text">1. Vite 的基本工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-vite-config-js-%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">2. vite.config.js 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E9%A1%B9%E7%9B%AE-Vite-%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.3.</span> <span class="nav-text">3. 项目 Vite 配置详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 基础配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 插件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8E%E4%BB%A3%E7%90%86"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 服务器与代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E8%B7%AF%E5%BE%84%E5%88%AB%E5%90%8D"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 路径别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-CSS-%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.3.5.</span> <span class="nav-text">3.5 CSS 预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-%E6%9E%84%E5%BB%BA%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="nav-number">1.3.6.</span> <span class="nav-text">3.6 构建与输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Vite-%E5%90%AF%E5%8A%A8%E4%B8%8E%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B"><span class="nav-number">1.4.</span> <span class="nav-text">4. Vite 启动与构建流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">1.4.1.</span> <span class="nav-text">5. 参考链接</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vite-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%8F%8A%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">Vite 工作原理及项目配置说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Vite-%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">1. Vite 的基本工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-vite-config-js-%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">2. vite.config.js 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E9%A1%B9%E7%9B%AE-Vite-%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.4.</span> <span class="nav-text">3. 项目 Vite 配置详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1 基础配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.2 插件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-Vue-%E6%94%AF%E6%8C%81"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">3.2.1 Vue 支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-UnoCSS"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">3.2.2 UnoCSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-3-HTML-%E5%8F%98%E9%87%8F%E6%9B%BF%E6%8D%A2"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">3.2.3 HTML 变量替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-4-%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5"><span class="nav-number">1.4.2.4.</span> <span class="nav-text">3.2.4 自动导入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-5-%E7%BB%84%E4%BB%B6%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%86%8C"><span class="nav-number">1.4.2.5.</span> <span class="nav-text">3.2.5 组件自动注册</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-6-SVG-%E5%9B%BE%E6%A0%87%E8%87%AA%E5%8A%A8%E5%BC%95%E5%85%A5"><span class="nav-number">1.4.2.6.</span> <span class="nav-text">3.2.6 SVG 图标自动引入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8E%E4%BB%A3%E7%90%86"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.3 服务器与代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E8%B7%AF%E5%BE%84%E5%88%AB%E5%90%8D"><span class="nav-number">1.4.4.</span> <span class="nav-text">3.4 路径别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-CSS-%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.4.5.</span> <span class="nav-text">3.5 CSS 预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-%E6%9E%84%E5%BB%BA%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="nav-number">1.4.6.</span> <span class="nav-text">3.6 构建与输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Vite-%E5%90%AF%E5%8A%A8%E4%B8%8E%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B"><span class="nav-number">1.5.</span> <span class="nav-text">4. Vite 启动与构建流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">1.6.</span> <span class="nav-text">5. 参考链接</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
